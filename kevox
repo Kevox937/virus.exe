@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!!! ERREUR CRITIQUE !!!</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1, p {
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+        .hidden {
+            opacity: 0;
+        }
+        #warning {
+            display: none;
+            font-size: 3em;
+            color: red;
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: glitch 0.1s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(10px, -10px); }
+            40% { transform: translate(-10px, 10px); }
+            60% { transform: translate(10px, 10px); }
+            80% { transform: translate(-10px, -10px); }
+            100% { transform: translate(0, 0); }
+        }
+        #ip {
+            font-size: 2em;
+            color: white;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #static {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center/cover no-repeat;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .red-bg {
+            background-color: darkred !important;
+        }
+        .alert-message {
+            font-size: 3em;
+            color: white;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+            display: none;
+        }
+        .error-glitch {
+            animation: glitch 0.1s infinite;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <audio id="scarySound" src="https://www.myinstants.com/media/sounds/virus-1825.mp3" preload="auto"></audio> <!-- Son de virus effrayant -->
+    <h1 id="title">TU AS DÉCLENCHÉ L'ENFER...</h1>
+    <p id="ip">LOCALISATION EN COURS: 192.168.1.66...</p>
+    <div id="static"></div>
+    <div id="warning">IL EST TROP TARD, TU VAS SOUFFRIR...</div>
+    <div class="alert-message" id="alert1">ERREUR FATALE: TON PC EST DÉTRUIT</div>
+    <div class="alert-message" id="alert2">DÉMOLITION EN COURS... TU NE PEUX PLUS FUIR</div>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            document.getElementById("scarySound").play(); // Démarre le son effrayant du virus
+        });
+
+        setTimeout(() => {
+            document.getElementById("title").classList.add("hidden");
+        }, 2000);
+        
+        setTimeout(() => {
+            document.getElementById("ip").style.opacity = "1";
+        }, 3000);
+        
+        setTimeout(() => {
+            document.getElementById("ip").style.opacity = "0";
+        }, 5000);
+        
+        setTimeout(() => {
+            document.getElementById("static").style.opacity = "0.8";
+        }, 6000);
+        
+        setTimeout(() => {
+            document.getElementById("warning").style.display = "flex";
+        }, 8000);
+        
+        setTimeout(() => {
+            document.getElementById("alert1").style.display = "block";
+            document.body.classList.add("red-bg");
+        }, 10000);
+
+        setTimeout(() => {
+            document.getElementById("alert2").style.display = "block";
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    alert("DÉMOLITION EN COURS... TU NE PEUX PLUS FUIR");
+                }, i * 2000);
+            }
+        }, 12000);
+
+        setInterval(() => {
+            window.onbeforeunload = function() {
+                return "Tu ne peux pas quitter, c'est trop tard...";
+            };
+        }, 1000);
+    </script>
+</body>
+</html>
